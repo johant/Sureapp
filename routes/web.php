@@ -43,11 +43,11 @@ function () {
     Route::get('brands/edit/{brand}', 'BrandsController@edit')->name('brands.edit');
     Route::post('brands/edit/{brand}', 'BrandsController@update')->name('brands.update');
 
-    Route::get('segmentations', 'segmentationsController@index')->name('segmentations.index');
-    Route::get('segmentations/create', 'segmentationsController@create')->name('segmentations.create');
-    Route::post('segmentations/create', 'segmentationsController@store')->name('segmentations.store');
-    Route::get('segmentations/edit/{segmentation}', 'segmentationsController@edit')->name('segmentations.edit');
-    Route::post('segmentations/edit/{segmentation}', 'segmentationsController@update')->name('segmentations.update');
+    Route::get('segmentations', 'SegmentationsController@index')->name('segmentations.index');
+    Route::get('segmentations/create', 'SegmentationsController@create')->name('segmentations.create');
+    Route::post('segmentations/create', 'SegmentationsController@store')->name('segmentations.store');
+    Route::get('segmentations/edit/{segmentation}', 'SegmentationsController@edit')->name('segmentations.edit');
+    Route::post('segmentations/edit/{segmentation}', 'SegmentationsController@update')->name('segmentations.update');
 
     Route::get('variants', 'VariantsController@index')->name('variants.index');
     Route::get('variants/create', 'VariantsController@create')->name('variants.create');

@@ -15,7 +15,7 @@
 </div> --}}
 @stop
 @section('content')
-@include('Admin.partials.statistics')
+@include('Admin.Partials.statistics')
 
 <div class="row">
   {{-- @include('partials.useraction') --}}
