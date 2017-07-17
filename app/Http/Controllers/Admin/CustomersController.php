@@ -42,24 +42,25 @@ class CustomersController extends Controller
         $client_types = Client::all();
         $variants = Variant::all();
         $areas = Area::all();
-        $coaches = Coach::all();
+        $cities = City::all();
         $segmentations = Segmentation::where('type', 'Clientes')->get();
-        return view('Admin.Customers.create', compact('client_types', 'variants', 'areas', 'coaches', 'segmentations'));
+        return view('Admin.Customers.create', compact('client_types', 'variants', 'areas', 'cities  ', 'segmentations'));
     }
     public function edit(Customer $customer)
     {
         $client_types = Client::all();
         $variants = Variant::all();
         $areas = Area::all();
-        $coaches = Coach::all();
+        $cities = City::all();
         $categories = Category::all();
         $followup_options = Followup_option::all();
         $segmentations = Segmentation::where('type', 'Clientes')->get();
         $staffs= Staff::where('customer_id',  $customer->id)->get();
+        $coaches= Coach::where('area_id',  $customer->area_id)->get();
         $schedules = Schedule::where('customer_id', $customer->id)->get();
         $survey_starts = Survey_start::where('customer_id', $customer->id)->get();
         $today = Carbon::today();
-        return view('Admin.Customers.edit', compact('customer', 'survey_starts', 'categories','client_types', 'variants', 'areas', 'coaches', 'segmentations', 'staffs', 'followup_options', 'schedules', 'today'));
+        return view('Admin.Customers.edit', compact('customer', 'survey_starts', 'coaches','categories','client_types', 'variants', 'areas', 'cities', 'segmentations', 'staffs', 'followup_options', 'schedules', 'today'));
     }
     public function store(Request $request)
     {
@@ -88,10 +89,10 @@ class CustomersController extends Controller
     public function dropdown()
     {
        $cat_id = Input::get('cat_id');
-       $coach = Coach::find($cat_id );
-       $city = City::where('area_id', '=', $coach->area_id)
+       $city = City::find($cat_id );
+       $coaches = Coach::where('area_id', '=', $city->area_id)
                       ->get();
-       return Response::json($city);
+       return Response::json($coaches);
     }
     public function copy(Request $request, Customer $customer)
     {

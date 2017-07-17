@@ -200,15 +200,15 @@
                                 <div class="form-group">
                                     <div class="col-md-3">
                                         <div class="label-wrapper">
-                                            <label class="control-label" for="coach_id" title="">Entrenador</label>
-                                            <div class="ico-help" title="Ingrese el nombre del Entrenador"><i class="fa fa-question-circle"></i></div></div>
+                                            <label class="control-label" for="area_id" title="">Departamento</label>
+                                            <div class="ico-help" title="Nombre de la Zona"><i class="fa fa-question-circle"></i></div></div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="input-group input-group-required">
-                                            <select class="form-control valid" name="coach_id" id="coach_id">
+                                            <select class="form-control valid" name="area_id" id="area_id">
                                             <option value="" disabled selected>Seleccione una Opción</option>
-                                            @foreach($coaches as $coach)
-                                                <option value="{{ $coach->id }}" {{old('coach_id') == $coach->id ? 'selected': ''}}>{{ $coach->name }}</option>
+                                            @foreach($areas as $area)
+                                                <option value="{{ $area->id }}" {{old('area_id') == $area->id ? 'selected': ''}}>{{ $area->name }}</option>
                                             @endforeach
                                             </select>
                                             <div class="input-group-btn">
@@ -218,16 +218,16 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="label-wrapper">
-                                            <label class="control-label" for="area_id" title="">Departamento</label>
-                                            <div class="ico-help" title="Nombre de la Zona"><i class="fa fa-question-circle"></i></div></div>
+                                            <label class="control-label" for="coach_id" title="">Entrenador</label>
+                                            <div class="ico-help" title="Ingrese el nombre del Entrenador"><i class="fa fa-question-circle"></i></div></div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="input-group input-group-required">
-                                            <select class="form-control valid" name="area_id" id="area_id">
+                                            <select class="form-control valid" name="coach_id" id="coach_id">
                                             <option value="" disabled selected>Seleccione una Opción</option>
-                                            @foreach($areas as $area)
-                                                <option value="{{ $area->id }}" {{old('area_id') == $area->id ? 'selected': ''}}>{{ $area->name }}</option>
-                                            @endforeach
+{{--                                             @foreach($coaches as $coach)
+                                                <option value="{{ $coach->id }}" {{old('coach_id') == $coach->id ? 'selected': ''}}>{{ $coach->name }}</option>
+                                            @endforeach --}}
                                             </select>
                                             <div class="input-group-btn">
                                                 <span class="required">*</span>
@@ -280,15 +280,15 @@
             e.preventDefault();
             $('#sale').val($('#name').val());
         });
-        $('#coach_id').on('change', function(e){
-            var coaches_id = e.target.value;
-               //ajax
-               $.get('/admin/customer/citydropdown?cat+id=' + coaches_id, function(data){
+        $('#area_id').on('change', function(e){
+            var area_id = e.target.value;
+               //ajax area_id
+               $.get('/admin/customer/citydropdown?cat+id=' + area_id, function(data){
                    //success data
-                   $('#area_id').empty();
-                   $('#area_id').append('<option value="">Seleccione una Opción</option>');
+                   $('#coach_id').empty();
+                   $('#coach_id').append('<option value="">Seleccione una Opción</option>');
                    $.each(data, function(index, subcatObj){
-                       $('#area_id').append('<option value=' + subcatObj.id  + '>'
+                       $('#coach_id').append('<option value=' + subcatObj.id  + '>'
                        + subcatObj.name + '</option>');
                    });
                });

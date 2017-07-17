@@ -199,6 +199,24 @@
                                 <div class="form-group">
                                     <div class="col-md-3">
                                         <div class="label-wrapper">
+                                            <label class="control-label" for="area_id" title="">Zona</label>
+                                            <div class="ico-help" title="Nombre de la Zona"><i class="fa fa-question-circle"></i></div></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group input-group-required">
+                                            <select class="form-control valid" name="area_id" id="area_id">
+                                            <option value="" disabled selected>Seleccione una Opción</option>
+                                            @foreach($areas as $area)
+                                                <option value="{{ $area->id }}" {{old('area_id', $customer->area_id ) == $area->id ? 'selected': ''}}>{{ $area->name }}</option>
+                                            @endforeach
+                                            </select>
+                                            <div class="input-group-btn">
+                                                <span class="required">*</span>
+                                            </div>
+                                         </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="label-wrapper">
                                             <label class="control-label" for="coach_id" title="">Entrenador</label>
                                             <div class="ico-help" title="Ingrese el nombre del Entrenador"><i class="fa fa-question-circle"></i></div></div>
                                     </div>
@@ -208,24 +226,6 @@
                                             <option value="" disabled selected>Seleccione una Opción</option>
                                             @foreach($coaches as $coach)
                                              <option value="{{ $coach->id }}" {{old('coach_id', $customer->coach_id ) == $coach->id ? 'selected': ''}}>{{ $coach->name }}</option>
-                                            @endforeach
-                                            </select>
-                                            <div class="input-group-btn">
-                                                <span class="required">*</span>
-                                            </div>
-                                         </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="label-wrapper">
-                                            <label class="control-label" for="area_id" title="">Zona</label>
-                                            <div class="ico-help" title="Nombre de la Zona"><i class="fa fa-question-circle"></i></div></div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="input-group input-group-required">
-                                            <select class="form-control valid" name="area_id" id="area_id">
-                                            <option value="" disabled selected>Seleccione una Opción</option>
-                                            @foreach($areas as $area)
-                                                <option value="{{ $area->id }}" {{old('area_id', $customer->area_id ) == $area->id ? 'selected': ''}}>{{ $area->name }}</option>
                                             @endforeach
                                             </select>
                                             <div class="input-group-btn">
@@ -263,6 +263,16 @@
             <div class="tab-pane" id="tab-staff">
                     <div class="panel-group">
                         <div class="panel panel-default">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                  <div class="pull-right">
+                                     <a href="{{ route( 'staffs.create', $customer->id )}}" class="btn bg-blue">
+                                            <i class="fa fa-plus-square"></i>
+                                           Adicionar Staff
+                                        </a>
+                                    </div>
+                                </h4>
+                             </div>
                             <div class="panel-body">
                             @include('Admin.Partials.staff')
                             </div>
@@ -302,15 +312,19 @@
   <!-- Select2 -->
   <script src="/adminlte/plugins/select2/select2.full.min.js"></script>
   <script>
-    $('#coach_id').on('change', function(e){
-            var coaches_id = e.target.value;
-               //ajax
-               $.get('/admin/customer/citydropdown?cat+id=' + coaches_id, function(data){
+        $("#btnPlaza").click(function(e){
+            e.preventDefault();
+            $('#sale').val($('#name').val());
+        });
+        $('#area_id').on('change', function(e){
+            var area_id = e.target.value;
+               //ajax area_id
+               $.get('/admin/customer/citydropdown?cat+id=' + area_id, function(data){
                    //success data
-                   $('#area_id').empty();
-                   $('#area_id').append('<option value="">Seleccione una Opción</option>');
+                   $('#coach_id').empty();
+                   $('#coach_id').append('<option value="">Seleccione una Opción</option>');
                    $.each(data, function(index, subcatObj){
-                       $('#area_id').append('<option value=' + subcatObj.id  + '>'
+                       $('#coach_id').append('<option value=' + subcatObj.id  + '>'
                        + subcatObj.name + '</option>');
                    });
                });

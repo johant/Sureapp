@@ -42,7 +42,7 @@
     <ul class="treeview-menu">
       {{-- <li {{ request()->is('tickets') ? 'class=active' : '' }}><a href="{{ route('tickets.list') }}"><i class="fa fa-eye"></i>Ver todos los Incidentes</a></li> --}}
       <li {{ request()->is('admin/customer/*') ||  request()->is('admin/customers') ? 'class=active' : '' }}><a href="{{route('customers.index')}}"><i class="fa fa-home"></i>Clientes</a> </li>
-      <li {{ request()->is('admin/segmentations') ? 'class=active' : '' }}><a href="{{route('customers.index')}}"><i class="fa fa-user"></i>Staff</a> </li>
+      {{-- <li {{ request()->is('admin/segmentations') ? 'class=active' : '' }}><a href="{{route('customers.index')}}"><i class="fa fa-user"></i>Staff</a> </li> --}}
       <li {{ request()->is('admin/coaches') ? 'class=active' : '' }}><a href="{{route('coaches.index')}}"><i class="fa fa-user-md"></i>Entrenadores</a> </li>
       {{-- <li {{ request()->is('tickets/close') ? 'class=active' : '' }}><a href="{{ route('tickets.close')}}"><i class="fa fa-pencil"></i>Cerrar un Incidente</a> </li> --}}
     </ul>

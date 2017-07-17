@@ -92,8 +92,8 @@
       });
     });
   </script>
-@include('Admin.partials.modal_new_survey')
-@include('Admin.partials.modal_update_survey')
+@include('Admin.Partials.modal_new_survey')
+@include('Admin.Partials.modal_update_survey')
 
 
 @endpush

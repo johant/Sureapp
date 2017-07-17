@@ -84,6 +84,7 @@ function () {
     Route::get('survey/questions/{survey}', 'SurveysController@options')->name('survey.question');
     Route::put('survey/update/{survey}', 'SurveysController@update')->name('survey.update');
     Route::post('survey/start/{customer}', 'SurveysController@survey_start')->name('survey.start');
+    Route::any('survey/close/{survey_start}', 'SurveysController@survey_close')->name('survey.close');
 
     Route::post('survey/answer/create/{survey}', 'QuestionsController@store')->name('question.create');
     Route::get('survey/answer/correct/{question}', 'QuestionsController@correct')->name('question.correct');

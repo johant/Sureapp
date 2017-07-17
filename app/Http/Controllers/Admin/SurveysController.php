@@ -10,6 +10,7 @@ use App\Customer;
 use App\Survey_start;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class SurveysController extends Controller
 {
@@ -83,5 +84,13 @@ class SurveysController extends Controller
           $survey_start->user_id = Auth::id();
           $survey_start->save();
           return back()->with('flash', 'Se ha generado la encuesta al Staff de ' .$customer->name .'-' . $customer->sale .'!!');
+      }
+      public function survey_close(Request $request, Survey_start $survey_start)
+      {
+        $survey_start->status =2;
+        // $survey_start->finished_at =Carbon::parse(date('d/m/Y'));
+        $survey_start->save();
+         return back()->with('flash', 'Se ha cerrado la encuesta!!');
+        # code...
       }
 }

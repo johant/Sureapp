@@ -27,7 +27,7 @@ class CitiesController extends Controller
     public function edit(City $city)
     {
         $areas = Area::all();
-        return view('Admin.cities.edit', compact('city', 'areas'));
+        return view('Admin.Cities.edit', compact('city', 'areas'));
     }
     public function store(Request $request)
     {

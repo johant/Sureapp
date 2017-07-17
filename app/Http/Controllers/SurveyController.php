@@ -23,7 +23,14 @@ class SurveyController extends Controller
     public function home(Request $request)
       {
         $staff = Staff::where('user_id', Auth::id())->first();
-        $survey_starts = Survey_start::where('customer_id', $staff->customer_id)->get();
+        // Falta validar que la encuesta no haya sido contestada
+        $survey_note = Survey_note::where('survey_id', 1)
+                              ->where('staff_id', $staff->id)->get();
+
+        $survey_starts = Survey_start::where('customer_id', $staff->customer_id)
+                                ->where('status', 1)
+                                ->where()
+                                ->get();
         $customer = Customer::find($staff->customer_id);
         // $surveys = Survey::get();
 

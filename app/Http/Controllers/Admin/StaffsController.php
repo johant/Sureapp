@@ -36,7 +36,8 @@ class StaffsController extends Controller
     public function store(Request $request, Customer $customer)
     {
         $this->validate($request, [
-        'name' => 'required|max:255'
+        'name' => 'required|max:255',
+        'document' => 'required|unique:staff|max:10'
         ]);
          $user = New User();
         $user->name = $request->get('name');

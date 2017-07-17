@@ -2,7 +2,7 @@
 @section('header')
 <h1 class="pull-left">
  Adicionar un Nuevo Personal
- <small><i class="fa fa-arrow-circle-left"></i><a href="{{ route('coaches.index') }}"> Regresar a la lista de Personal</a></small>
+ <small><i class="fa fa-arrow-circle-left"></i><a href="{{ route('customers.index') }}"> Regresar a la lista de Personal</a></small>
 </h1>
 @stop
 @section('content')
