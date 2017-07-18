@@ -16,9 +16,9 @@ Zonas
 @stop
 @section('content')
 {{-- @include('partials.statistics') --}}
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <table id="categories-table" class="table table-bordered table-striped">
+  <div class="box box-primary">
+    <div class="box-body">
+      <table id="zones-table" class="table table-bordered table-striped">
         <thead>
           <tr>
               <th>Id</th>
@@ -26,7 +26,7 @@ Zonas
               <th>Descripción</th>
               <th>Usuario Creación</th>
               <th>Fecha Creación</th>
-              <th></th>
+              <th style="text-align:center">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -38,8 +38,8 @@ Zonas
             <td>{{ $area->user->name }}</td>
             <td>{{ $area->created_at }}</td>
             <td style="text-align:center">
-              <a class="btn btn-default" href="{{ route( 'areas.edit', $area->id )}}"><i class="fa fa-pencil"></i>Editar</a>
-              <a class="btn btn-danger" href="Edit/45"><i class="fa fa-plus-square"></i>Eliminar</a>
+            <span style="padding-right: 5px"><a href="{{ route( 'areas.edit', $area->id )}}" data-toggle="tooltip" title="Editar Zona"><i class="fa fa-fw fa-pencil text-warning fa-2x" title="Editar Zona"></i></a></span>
+            <a href="#" data-toggle="tooltip" title="Eliminar Zona"><i class="fa fa-fw fa-times text-danger fa-2x" title="Eliminar Zona"></i></a>
             </td>
           </tr>
           @endforeach
@@ -63,10 +63,10 @@ Zonas
 
   <script>
     $(function () {
-      $('#categories-table').DataTable({
+      $('#zones-table').DataTable({
         "paging": true,
-        "lengthChange": false,
-        "searching": false,
+        "lengthChange": true,
+        "searching": true,
         "ordering": true,
         "info": true,
         "autoWidth": false

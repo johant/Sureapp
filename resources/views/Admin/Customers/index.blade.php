@@ -12,8 +12,8 @@
 @stop
 @section('content')
 {{-- @include('partials.statistics') --}}
-  <div class="panel panel-default">
-    <div class="panel-body">
+  <div class="box box-primary">
+    <div class="box-body">
       <table id="customers-table" class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -36,8 +36,9 @@
             <td>{{ $customer->client->name }}</td>
             <td>{{ $customer->trade_id}}</td>
             <td style="text-align:center">
-              <a class="btn btn-default" href="{{ route( 'customer.edit', $customer->id )}}"><i class="fa fa-eye"></i>Ver</a>
-              <a class="btn btn-danger" href="{{ route( 'staffs.create', $customer->id )}}"><i class="fa fa-plus-square"></i>Staff</a>
+            <span style="padding-right: 5px"><a href="{{ route( 'customer.edit', $customer->id )}}" data-toggle="tooltip" title="Editar Cliente"><i class="fa fa-fw fa-pencil text-warning fa-2x" title="Editar Cliente"></i></a></span>
+            <span style="padding-right: 5px"><a href="{{ route( 'staffs.create', $customer->id )}}" data-toggle="tooltip" title="Crear Staff"><i class="fa fa-fw fa-users text-primary fa-2x" title="Crear Staff"></i></a></span>
+            <a href="#" data-toggle="tooltip" title="Eliminar Cliente"><i class="fa fa-fw fa-times text-danger fa-2x" title="Eliminar Cliente"></i></a>
             </td>
           </tr>
           @endforeach
@@ -60,7 +61,7 @@
     $(function () {
       $('#customers-table').DataTable({
         "paging": true,
-        "lengthChange": false,
+        "lengthChange": true,
         "searching": true,
         "ordering": true,
         "info": true,

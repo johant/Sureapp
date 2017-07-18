@@ -12,8 +12,8 @@
 @stop
 @section('content')
 {{-- @include('partials.statistics') --}}
-  <div class="panel panel-default">
-    <div class="panel-body">
+  <div class="box box-primary">
+    <div class="box-body">
       <table id="surveys-table" class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -66,7 +66,7 @@
     $(function () {
       $('#surveys-table').DataTable({
         "paging": true,
-        "lengthChange": false,
+        "lengthChange": true,
         "searching": true,
         "ordering": true,
         "info": true,

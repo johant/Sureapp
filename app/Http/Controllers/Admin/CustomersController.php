@@ -89,8 +89,8 @@ class CustomersController extends Controller
     public function dropdown()
     {
        $cat_id = Input::get('cat_id');
-       $city = City::find($cat_id );
-       $coaches = Coach::where('area_id', '=', $city->area_id)
+       // $city = Area::find($cat_id );
+       $coaches = Coach::where('area_id', '=', $cat_id)
                       ->get();
        return Response::json($coaches);
     }

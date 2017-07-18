@@ -47,6 +47,20 @@
       {{-- <li {{ request()->is('tickets/close') ? 'class=active' : '' }}><a href="{{ route('tickets.close')}}"><i class="fa fa-pencil"></i>Cerrar un Incidente</a> </li> --}}
     </ul>
   </li>
+    <li class="treeview {{ request()->is('admin/users') ? 'active' : '' }}">
+    <a href="#"><i class="fa fa-users"></i> <span>Seguridad</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+      {{-- <li {{ request()->is('tickets') ? 'class=active' : '' }}><a href="{{ route('tickets.list') }}"><i class="fa fa-eye"></i>Ver todos los Incidentes</a></li> --}}
+      <li {{ request()->is('admin/users/*') ? 'class=active' : '' }}><a href="{{route('users.index')}}"><i class="fa fa-home"></i>Usuarios</a> </li>
+      <li {{ request()->is('admin/users/*') ? 'class=active' : '' }}><a href="" data-user="{{ auth()->user()->name }}"
+                  data-toggle="modal" data-target="#updatepassword-window" href=""><i class="fa fa-lock"></i>Cambio Contraseña</a> </li>
+      {{-- <li {{ request()->is('admin/segmentations') ? 'class=active' : '' }}><a href="{{route('customers.index')}}"><i class="fa fa-user"></i>Staff</a> </li> --}}
+    </ul>
+  </li>
    <li class="treeview {{ request()->is('admin/surveys') || request()->is('admin/survey/*') ? 'active' : '' }}">
     <a href="#"><i class="fa fa-gears"></i> <span>Preguntas</span>
       <span class="pull-right-container">
@@ -59,3 +73,20 @@
      </ul>
   </li>
 </ul>
+
+@push('scripts')
+
+  <script>
+    $(function () {
+
+      $('#updatepassword-window').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var title = button.data('user') // Extract info from data-* attributes
+        var modal = $(this)
+        modal.find('.modal-title-password').text('Cambiar Contraseña: ' + title)
+      });
+    });
+  </script>
+@include('Admin.Modals.modal-password')
+
+@endpush

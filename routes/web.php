@@ -89,6 +89,10 @@ function () {
     Route::post('survey/answer/create/{survey}', 'QuestionsController@store')->name('question.create');
     Route::get('survey/answer/correct/{question}', 'QuestionsController@correct')->name('question.correct');
     Route::put('survey/answer/correct/{question}', 'QuestionsController@updatecorrect')->name('question.update.correct');
+
+    Route::get('users', 'UsersController@index')->name('users.index');
+    Route::get('users/create', 'UsersController@create')->name('users.create');
+    Route::post('users/create', 'UsersController@store')->name('users.store');
 });
 
 

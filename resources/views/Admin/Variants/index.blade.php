@@ -16,8 +16,8 @@
 @stop
 @section('content')
 {{-- @include('partials.statistics') --}}
-  <div class="panel panel-default">
-    <div class="panel-body">
+  <div class="box box-primary">
+    <div class="box-body">
       <table id="categories-table" class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -37,9 +37,9 @@
             <td>{{ $variant->description }}</td>
             <td>{{ $variant->brand->name }}</td>
             <td>{{ $variant->segmentation->name }}</td>
-            <td style="text-align:center">
-              <a class="btn btn-default" href="{{ route( 'variants.edit', $variant->id )}}"><i class="fa fa-pencil"></i>Editar</a>
-              <a class="btn btn-danger" href="Edit/45"><i class="fa fa-plus-square"></i>Eliminar</a>
+           <td style="text-align:center">
+            <span style="padding-right: 5px"><a href="{{ route( 'variants.edit', $variant->id )}}" data-toggle="tooltip" title="Editar Variantes"><i class="fa fa-fw fa-pencil text-warning fa-2x" title="Editar Variantes"></i></a></span>
+            <a href="#" data-toggle="tooltip" title="Eliminar Variantes"><i class="fa fa-fw fa-times text-danger fa-2x" title="Eliminar Variantes"></i></a>
             </td>
           </tr>
           @endforeach
@@ -65,8 +65,8 @@
     $(function () {
       $('#categories-table').DataTable({
         "paging": true,
-        "lengthChange": false,
-        "searching": false,
+        "lengthChange": true,
+        "searching": true,
         "ordering": true,
         "info": true,
         "autoWidth": false

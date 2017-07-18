@@ -16,15 +16,15 @@
 @stop
 @section('content')
 {{-- @include('partials.statistics') --}}
-  <div class="panel panel-default">
-    <div class="panel-body">
+  <div class="box box-primary">
+    <div class="box-body">
       <table id="categories-table" class="table table-bordered table-striped">
         <thead>
           <tr>
               <th>Id</th>
               <th>Nombre</th>
               <th>Descripción</th>
-              <th></th>
+              <th style="text-align:center">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -34,8 +34,8 @@
             <td>{{ $category->name }}</td>
             <td>{{ $category->description }}</td>
             <td style="text-align:center">
-              <a class="btn btn-default" href="{{ route( 'category.edit', $category->id )}}"><i class="fa fa-pencil"></i>Editar</a>
-              <a class="btn btn-danger" href="Edit/45"><i class="fa fa-plus-square"></i>Eliminar</a>
+            <span style="padding-right: 5px"><a href="{{ route( 'category.edit', $category->id )}}" data-toggle="tooltip" title="Editar Categoria"><i class="fa fa-fw fa-pencil text-warning fa-2x" title="Editar Categoria"></i></a></span>
+            <a href="#" data-toggle="tooltip" title="Eliminar Categoria"><i class="fa fa-fw fa-times text-danger fa-2x" title="Eliminar Categoria"></i></a>
             </td>
           </tr>
           @endforeach
@@ -61,8 +61,8 @@
     $(function () {
       $('#categories-table').DataTable({
         "paging": true,
-        "lengthChange": false,
-        "searching": false,
+        "lengthChange": true,
+        "searching": true,
         "ordering": true,
         "info": true,
         "autoWidth": false

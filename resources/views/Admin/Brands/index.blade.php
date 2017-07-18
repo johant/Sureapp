@@ -16,8 +16,8 @@
 @stop
 @section('content')
 {{-- @include('partials.statistics') --}}
-  <div class="panel panel-default">
-    <div class="panel-body">
+  <div class="box box-primary">
+    <div class="box-body">
       <table id="categories-table" class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -26,7 +26,7 @@
               <th>Descripción</th>
               <th>Usuario Creación</th>
               <th>Fecha Creación</th>
-              <th></th>
+              <th style="text-align:center">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -38,8 +38,8 @@
             <td>{{ $brand->user->name }}</td>
             <td>{{ $brand->created_at }}</td>
             <td style="text-align:center">
-              <a class="btn btn-default" href="{{ route( 'brands.edit', $brand->id )}}"><i class="fa fa-pencil"></i>Editar</a>
-              <a class="btn btn-danger" href="Edit/45"><i class="fa fa-plus-square"></i>Eliminar</a>
+            <span style="padding-right: 5px"><a href="{{ route( 'brands.edit', $brand->id  )}}" data-toggle="tooltip" title="Editar Marca"><i class="fa fa-fw fa-pencil text-warning fa-2x" title="Editar Marca"></i></a></span>
+            <a href="#" data-toggle="tooltip" title="Eliminar Marca"><i class="fa fa-fw fa-times text-danger fa-2x" title="Eliminar Marca"></i></a>
             </td>
           </tr>
           @endforeach

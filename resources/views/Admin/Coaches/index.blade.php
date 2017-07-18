@@ -12,8 +12,8 @@
 @stop
 @section('content')
 {{-- @include('partials.statistics') --}}
-  <div class="panel panel-default">
-    <div class="panel-body">
+  <div class="box box-primary">
+    <div class="box-body">
       <table id="customers-table" class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -22,7 +22,7 @@
               <th>Email</th>
               <th>Zona</th>
               <th>Estado</th>
-              <th></th>
+              <th style="text-align:center">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -40,8 +40,8 @@
             @endif
             </td>
             <td style="text-align:center">
-              <a class="btn btn-default" href="{{ route( 'coaches.edit', $coach->id )}}"><i class="fa fa-pencil"></i>Editar</a>
-              <a class="btn btn-danger" href="Edit/45"><i class="fa fa-minus-square"></i>Eliminar</a>
+            <span style="padding-right: 5px"><a href="{{ route( 'coaches.edit', $coach->id )}}" data-toggle="tooltip" title="Editar Entrenador"><i class="fa fa-fw fa-pencil text-warning fa-2x" title="Editar Entrenador"></i></a></span>
+            <a href="#" data-toggle="tooltip" title="Eliminar Entrenador"><i class="fa fa-fw fa-times text-danger fa-2x" title="Eliminar Entrenador"></i></a>
             </td>
           </tr>
           @endforeach
@@ -64,15 +64,15 @@
     $(function () {
       $('#customers-table').DataTable({
         "paging": true,
-        "lengthChange": false,
-        "searching": false,
+        "lengthChange": true,
+        "searching": true,
         "ordering": true,
         "info": true,
         "autoWidth": false
       });
       $('#customers-pending-table').DataTable({
         "paging": true,
-        "lengthChange": false,
+        "lengthChange": true,
         "searching": false,
         "ordering": true,
         "info": true,
